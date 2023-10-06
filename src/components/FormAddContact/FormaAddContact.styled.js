@@ -70,8 +70,7 @@ export const InputBox = styled('div')({
   display: 'flex',
   alignItems: 'center',
   gap: '10px',
-  
-})
+});
 export const ErrorMessageStyled = styled('div')({
   display: 'inline-block',
   fontSize: '12px',
