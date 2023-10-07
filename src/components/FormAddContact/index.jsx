@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { object, string } from 'yup';
+import { addContactAction } from 'store/contacts/sliceContacts';
+import { useDispatch, useSelector } from 'react-redux';
+import { Report } from 'notiflix';
+
 import {
   ButtonIcon,
   ButtonSubmit,
@@ -31,10 +35,26 @@ const initialValues = {
   number: '',
 };
 
-export const FormAddContact = ({ addContact}) => {
+export const FormAddContact = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(store => store.contacts.contacts);
+
   const handleSubmit = (value, { resetForm }) => {
     addContact(value);
     resetForm();
+  };
+  const addContact = data => {
+    const identicalContactName = contacts?.some(
+      ({ name }) => data.name === name
+    );
+    if (identicalContactName) {
+      return Report.warning(
+        'WARNING',
+        `${data.name} is already in contacts`,
+        'ok'
+      );
+    }
+    dispatch(addContactAction(data));
   };
 
   return (
