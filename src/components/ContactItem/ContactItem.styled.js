@@ -1,11 +1,12 @@
-import { styled } from "styled-components";
+import { styled } from 'styled-components';
 
 export const ContactItemEl = styled('li')({
-  width: '400px',
+  minWidth: '400px',
+  minHeight: '60px',
   display: 'flex',
-  gap: '20px',
+  gap: '10px',
   alignItems: 'center',
-  padding: '10px 10px 10px 0',
+  padding: '10px',
   position: 'relative',
   overflow: 'hidden',
 
@@ -14,7 +15,42 @@ export const ContactItemEl = styled('li')({
   },
 });
 
-export const ContactData = styled('p')({
+export const ContactFavorite = styled('button')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  paddingLeft: '10px',
+  paddingRight: '20px',
+
+  position: 'relative',
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: '50%',
+    right: '0px',
+    height: '80%',
+    width: '1px',
+    background: '#000',
+
+    transform: 'translateY(-50%)',
+  },
+
+  '& svg': {
+    fontSize: '22px',
+    fill: '#aeaeae',
+  },
+  '&:is(:hover,:focus)': {
+    '& > svg': {
+      fill: '#fa0',
+      fontWeight: 700,
+
+      transform: 'scale(1.2)',
+    },
+  },
+});
+
+export const ContactData = styled('div')({
   width: '100%',
   display: 'flex',
   alignItems: 'center',
@@ -36,9 +72,9 @@ export const ContactData = styled('p')({
   '&::after': {
     content: '""',
     position: 'absolute',
-    bottom: '-35%',
+    bottom: '-15px',
     left: '0',
-    width: '100%',
+    width: '125%',
     height: '2px',
     border: 'none',
     borderRadius: '4px',
@@ -50,72 +86,100 @@ export const ContactData = styled('p')({
     boxShadow: '0 1px 0 0 #454545',
   },
   'li:hover &::after': {
-    transform: 'translateX(0%)',
+    transform: 'translateX(-20%)',
   },
 });
 
 export const ContactName = styled('span')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
   fontSize: '20px',
   fontWeight: '600',
   lineHeight: '1.4',
 });
 export const ContactNumber = styled('span')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '10px',
   fontSize: '18px',
   fontWeight: '600',
   lineHeight: '1.4',
 });
 
 export const ContactDelete = styled('button')({
-  width: '28px',
-  height: '28px',
-  borderRadius: '100%',
-  backgroundColor: 'transparent',
-  border: 'transparent',
-  fontWeight: '600',
+  width: '40px',
+  height: '40px',
+
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  transitionDuration: '0.3s',
+
+  borderRadius: '50%',
+  border: 'transparent',
+  transition:
+    'backgroundColor  0.3s cubic-bezier(0.4, 0, 0.2, 1),width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   overflow: 'hidden',
-  position: 'relative',
+  fontWeight: '600',
 
   '& > svg': {
-    fontSize: '16px',
-    width: '24px',
-    height: '24px',
+    fontSize: '28px',
     fill: '#955',
-    transitionDuration: '0.3s',
-  },
-
-  '&:hover': {
-    width: '90px',
-    borderRadius: '50px',
-    transitionDuration: '0.3s',
-    backgroundColor: 'rgb(255, 69, 69)',
-    alignItems: 'center',
-  },
-
-  '&:hover svg': {
-    fill: '#bbb',
-    transitionDuration: '0.3s',
-    transform: 'rotate(360deg)',
+    transition:
+      'fill  0.3s cubic-bezier(0.4, 0, 0.2, 1),font-size 0.2s cubic-bezier(0.4, 0, 0.2, 1),transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
   '&::before': {
     display: 'none',
+
     content: '"Delete"',
     color: '#bbb',
     opacity: '0',
-    transitionDuration: '0.3s',
-    fontSize: '2px',
+    transition:
+      'opacity  0.3s cubic-bezier(0.4, 0, 0.2, 1),transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
-  '&:hover::before': {
-    display: 'block',
-    paddingRight: '5px',
-    fontSize: '13px',
-    opacity: '1',
-    transform: 'translateY(0px)',
-    transitionDuration: '0.3s',
+  '&:is(:hover, :focus)': {
+    width: '110px',
+    maxHeight: '100%',
+    padding: '8px 4px',
+    borderRadius: '50px',
+    transition:
+      'backgroundColor  0.3s cubic-bezier(0.4, 0, 0.2, 1),width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+    backgroundColor: 'rgb(255, 69, 69)',
+
+    '& svg': {
+      fontSize: '18px',
+      fill: '#bbb',
+      transform: 'rotate(360deg)',
+    },
+    '&::before': {
+      display: 'block',
+      paddingRight: '5px',
+      fontSize: '16px',
+      opacity: '1',
+    },
+  },
+});
+
+export const ContactChange = styled('button')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '5px',
+  '& svg': {
+    fontSize: '18px',
+    fill: '#aeaeae',
+    transition:
+      'fill 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+
+  '&:is(:hover,:focus)': {
+    '& > svg': {
+      fill: '#34974d',
+      fontWeight: 700,
+
+      transform: 'scale(1.2)',
+    },
   },
 });

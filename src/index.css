@@ -1,8 +1,12 @@
 @import-normalize;
+
 /* bring in normalize.css styles */
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
+
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -37,6 +41,9 @@ p {
 button {
   display: block;
   cursor: pointer;
+  background: transparent;
+  border: transparent;
+  outline: transparent;
 }
 
 ul {

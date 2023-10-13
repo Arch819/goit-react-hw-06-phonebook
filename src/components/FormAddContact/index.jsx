@@ -14,7 +14,7 @@ import {
   InputBox,
 } from './FormaAddContact.styled';
 
-const schema = object().shape({
+export const schema = object().shape({
   name: string()
     .trim()
     .matches(

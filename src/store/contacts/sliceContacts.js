@@ -11,6 +11,7 @@ export const contactsSlice = createSlice({
           payload: {
             ...data,
             id: nanoid(),
+            isFavorite: false,
           },
         };
       },
@@ -23,8 +24,37 @@ export const contactsSlice = createSlice({
     deleteContactAction(state, { payload }) {
       state.contacts = state.contacts.filter(contact => contact.id !== payload);
     },
+    addFavorite: (state, { payload }) => {
+      state.contacts = state.contacts.map(contact => {
+        if (contact.id === payload) {
+          return {
+            ...contact,
+            isFavorite: !contact.isFavorite,
+          };
+        } else {
+          return contact;
+        }
+      });
+    },
+    changeContactAction: (state, { payload }) => {
+      state.contacts = state.contacts.map(contact => {
+        if (contact.id === payload.id) {
+          return {
+            ...contact,
+            ...payload.inputValue,
+          };
+        } else {
+          return contact;
+        }
+      });
+    },
   },
 });
 
-export const { addContactAction, deleteContactAction } = contactsSlice.actions;
+export const {
+  addContactAction,
+  deleteContactAction,
+  addFavorite,
+  changeContactAction,
+} = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
